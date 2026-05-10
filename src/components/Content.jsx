@@ -1,15 +1,27 @@
+import { itemData } from '../data/mockData'
+import Item from './Item'
+
 function Content() {
   return (
-    <div className="content">
-      <div className="search-box">
-        <input type="text" placeholder="상품 검색..." />
-        <button>검색</button>
+    <main className="flex flex-col items-center pt-10">
+      <div className="flex w-[420px]">
+        <input
+          type="text"
+          placeholder="상품 검색..."
+          className="flex-1 px-4 py-2 text-sm border border-gray-300 rounded-l-md outline-none"
+        />
+
+        <button className="px-6 py-2 text-sm text-white bg-blue-500 rounded-r-md">
+          검색
+        </button>
       </div>
 
-      <img src="/gdg-logo.svg" alt="GDG 로고" className="content-logo" />
-
-      <p>검색 결과가 없습니다.</p>
-    </div>
+      <section className="flex flex-col gap-5 mt-14">
+        {itemData.map((item) => (
+          <Item key={item.id} item={item} />
+        ))}
+      </section>
+    </main>
   )
 }
 
