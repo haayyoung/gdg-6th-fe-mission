@@ -1,7 +1,19 @@
-import { itemData } from '../data/mockData'
+import { useEffect, useState } from 'react'
+import { getItemData } from '../apis/shopApi'
 import Item from './Item'
 
 function Content() {
+  const [items, setItems] = useState([])
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      const data = await getItemData()
+      setItems(data)
+    }
+
+    fetchItems()
+  }, [])
+
   return (
     <main className="flex flex-col items-center pt-10">
       <div className="flex w-[420px]">
@@ -17,7 +29,7 @@ function Content() {
       </div>
 
       <section className="flex flex-col gap-5 mt-14">
-        {itemData.map((item) => (
+        {items.map((item) => (
           <Item key={item.id} item={item} />
         ))}
       </section>

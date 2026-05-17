@@ -26,8 +26,8 @@ function Navbar() {
         </button>
       </nav>
 
-      <button className="px-4 py-1 text-sm text-blue-500 border border-blue-300 rounded-md">
-        관리자
+      <button onClick={() => navigate('/admin')} className="px-4 py-1 text-sm text-blue-500 border border-blue-300 rounded-md">
+         관리자
       </button>
     </header>
   )

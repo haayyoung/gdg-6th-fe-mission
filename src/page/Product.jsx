@@ -1,11 +1,24 @@
-import { sortedData } from '../data/mockData'
+import { useEffect, useState } from 'react'
+import { getSortedData } from '../apis/shopApi'
 import Item from '../components/Item'
 import Footer from '../components/Footer'
 
 function Product() {
-  const sortedItems = [...sortedData].sort((a, b) =>
-    a.itemName.localeCompare(b.itemName, 'ko')
-  )
+  const [items, setItems] = useState([])
+
+  useEffect(() => {
+    const fetchSortedData = async () => {
+      const data = await getSortedData()
+
+      const sortedItems = [...data].sort((a, b) =>
+        a.itemName.localeCompare(b.itemName, 'ko')
+      )
+
+      setItems(sortedItems)
+    }
+
+    fetchSortedData()
+  }, [])
 
   return (
     <main className="flex flex-col items-center pt-10">
@@ -15,8 +28,8 @@ function Product() {
       </select>
 
       <section className="flex flex-col gap-5">
-        {sortedItems.map((item) => (
-          <Item key={`${item.id}-${item.itemName}`} item={item} />
+        {items.map((item) => (
+          <Item key={item.id} item={item} />
         ))}
       </section>
 

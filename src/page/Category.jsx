@@ -1,19 +1,29 @@
-import { useState } from 'react'
-import { categoryData } from '../data/mockData'
+import { useEffect, useState } from 'react'
+import { getCategoryData } from '../apis/shopApi'
 import Item from '../components/Item'
 import Footer from '../components/Footer'
 
 function Category() {
   const [selectedCategory, setSelectedCategory] = useState('')
+  const [items, setItems] = useState([])
 
   const categories = ['의류', '전자기기', '화장품', '식품']
+
+  useEffect(() => {
+    const fetchCategoryData = async () => {
+      const data = await getCategoryData()
+      setItems(data)
+    }
+
+    fetchCategoryData()
+  }, [])
 
   const handleCategoryClick = (category) => {
     console.log(`${category} 카테고리 클릭`)
     setSelectedCategory(category)
   }
 
-  const filteredItems = categoryData.filter(
+  const filteredItems = items.filter(
     (item) => item.category === selectedCategory
   )
 
@@ -36,7 +46,7 @@ function Category() {
       </div>
 
       <section className="flex flex-col gap-5">
-        {(selectedCategory === '' ? categoryData : filteredItems).map((item) => (
+        {(selectedCategory === '' ? items : filteredItems).map((item) => (
           <Item key={item.id} item={item} />
         ))}
       </section>

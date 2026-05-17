@@ -4,10 +4,11 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 
 import App from './App.jsx'
-import Home from './pages/Home.jsx'
-import Category from './pages/Category.jsx'
-import Price from './pages/Price.jsx'
-import Product from './pages/Product.jsx'
+import Home from './page/Home.jsx'
+import Category from './page/Category.jsx'
+import Price from './page/Price.jsx'
+import Product from './page/Product.jsx'
+import Admin from './page/Admin.jsx'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/product',
         element: <Product />,
+      },
+      {
+        path: '/admin',
+        element: <Admin />,
       },
     ],
   },

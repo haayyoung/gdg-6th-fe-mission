@@ -1,20 +1,38 @@
-import { priceSelectedData } from '../data/mockData'
+import { useEffect, useState } from 'react'
+import { getPriceSelectedData } from '../apis/shopApi'
 import Item from '../components/Item'
 import Footer from '../components/Footer'
 
 function Price() {
+  const [priceData, setPriceData] = useState({
+    low: '',
+    high: '',
+    items: [],
+  })
+
+  useEffect(() => {
+    const fetchPriceData = async () => {
+      const data = await getPriceSelectedData()
+      setPriceData(data)
+    }
+
+    fetchPriceData()
+  }, [])
+
   return (
     <main className="flex flex-col items-center pt-10">
       <div className="flex gap-4 mb-10">
         <input
           type="number"
-          defaultValue={priceSelectedData.low}
+          value={priceData.low}
+          readOnly
           className="w-32 px-4 py-2 text-sm border border-gray-300 rounded-md outline-none"
         />
 
         <input
           type="number"
-          defaultValue={priceSelectedData.high}
+          value={priceData.high}
+          readOnly
           className="w-32 px-4 py-2 text-sm border border-gray-300 rounded-md outline-none"
         />
 
@@ -24,7 +42,7 @@ function Price() {
       </div>
 
       <section className="flex flex-col gap-5">
-        {priceSelectedData.items.map((item) => (
+        {priceData.items.map((item) => (
           <Item key={item.id} item={item} />
         ))}
       </section>
