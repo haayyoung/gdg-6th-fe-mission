@@ -5,8 +5,8 @@ import Footer from '../components/Footer'
 
 function Price() {
   const [priceData, setPriceData] = useState({
-    low: '',
-    high: '',
+    low: 0,
+    high: 0,
     items: [],
   })
 
