@@ -7,18 +7,19 @@ function Product() {
   const [items, setItems] = useState([])
 
   useEffect(() => {
-    const fetchSortedData = async () => {
-      const data = await getSortedData()
+  const fetchSortedData = async () => {
+    const data = await getSortedData()
 
-      const sortedItems = [...data].sort((a, b) =>
-        a.itemName.localeCompare(b.itemName, 'ko')
-      )
+    const sortedItems = data.toSorted((a, b) =>
+      a.itemName.localeCompare(b.itemName, 'ko')
+    )
 
-      setItems(sortedItems)
-    }
+    setItems(sortedItems)
+  }
 
-    fetchSortedData()
-  }, [])
+  fetchSortedData()
+}, [])
+
 
   return (
     <main className="flex flex-col items-center pt-10">
