@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { getCategoryData } from '../apis/shopApi'
 import Item from '../components/Item'
 import Footer from '../components/Footer'
+import CategoryButton from '../components/CategoryButton'
 
 function Category() {
   const [selectedCategory, setSelectedCategory] = useState('')
@@ -30,18 +31,17 @@ function Category() {
   return (
     <main className="flex flex-col items-center pt-10">
       <div className="flex flex-col w-[620px] mb-10">
-        <button className="w-40 px-4 py-2 text-sm text-left border border-gray-300 rounded-t-md">
+        <CategoryButton isHeader>
           카테고리 선택
-        </button>
+        </CategoryButton>
 
         {categories.map((category) => (
-          <button
+          <CategoryButton
             key={category}
             onClick={() => handleCategoryClick(category)}
-            className="w-40 px-4 py-2 text-sm text-left border border-gray-300 bg-gray-100 hover:bg-gray-200"
           >
             {category}
-          </button>
+          </CategoryButton>
         ))}
       </div>
 

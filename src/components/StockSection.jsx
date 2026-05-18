@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import FormInput from './FormInput'
 
 function StockSection() {
   const [itemName, setItemName] = useState('')
@@ -14,28 +15,19 @@ function StockSection() {
 
       <section className="p-6 mb-12 border border-gray-300 rounded-md">
         <div className="grid grid-cols-2 gap-4">
-          <label className="flex items-center gap-4">
-            <span className="w-20 text-sm">상품명</span>
+          <FormInput
+            label="상품명"
+            placeholder="상품명 입력..."
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+          />
 
-            <input
-              type="text"
-              placeholder="상품명 입력..."
-              value={itemName}
-              onChange={(e) => setItemName(e.target.value)}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
-            />
-          </label>
-
-          <label className="flex items-center gap-4">
-            <span className="w-20 text-sm">수량</span>
-
-            <input
-              type="number"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
-            />
-          </label>
+          <FormInput
+            label="수량"
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          />
         </div>
 
         <div className="flex justify-end mt-4">

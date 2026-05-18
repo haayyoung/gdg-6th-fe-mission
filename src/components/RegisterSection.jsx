@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import FormInput from './FormInput'
 
 function RegisterSection() {
   const [itemName, setItemName] = useState('')
@@ -7,9 +8,7 @@ function RegisterSection() {
   const [category, setCategory] = useState('')
 
   const handleRegister = () => {
-    console.log(
-      `${itemName} ${quantity} ${price} ${category} 가 등록되었습니다.`
-    )
+    console.log(`${itemName} ${quantity} ${price} ${category} 가 등록되었습니다.`)
   }
 
   return (
@@ -18,51 +17,33 @@ function RegisterSection() {
 
       <section className="p-6 mb-12 border border-gray-300 rounded-md">
         <div className="grid grid-cols-2 gap-4">
-          <label className="flex items-center gap-4">
-            <span className="w-20 text-sm">상품명</span>
+          <FormInput
+            label="상품명"
+            placeholder="상품명 입력..."
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+          />
 
-            <input
-              type="text"
-              placeholder="상품명 입력..."
-              value={itemName}
-              onChange={(e) => setItemName(e.target.value)}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
-            />
-          </label>
+          <FormInput
+            label="수량"
+            type="number"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+          />
 
-          <label className="flex items-center gap-4">
-            <span className="w-20 text-sm">수량</span>
+          <FormInput
+            label="가격"
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
 
-            <input
-              type="number"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
-            />
-          </label>
-
-          <label className="flex items-center gap-4">
-            <span className="w-20 text-sm">가격</span>
-
-            <input
-              type="number"
-              value={price}
-              onChange={(e) => setPrice(e.target.value)}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
-            />
-          </label>
-
-          <label className="flex items-center gap-4">
-            <span className="w-20 text-sm">카테고리</span>
-
-            <input
-              type="text"
-              placeholder="카테고리 입력..."
-              value={category}
-              onChange={(e) => setCategory(e.target.value)}
-              className="flex-1 px-3 py-2 border border-gray-300 rounded-md"
-            />
-          </label>
+          <FormInput
+            label="카테고리"
+            placeholder="카테고리 입력..."
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
         </div>
 
         <div className="flex justify-end mt-4">

@@ -7,9 +7,7 @@ function Admin() {
     <main className="flex flex-col items-center pt-10">
       <div className="w-[620px]">
         <RegisterSection />
-
         <StockSection />
-
         <DeleteSection />
       </div>
     </main>

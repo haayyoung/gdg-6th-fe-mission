@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import FormInput from './FormInput'
 
 function DeleteSection() {
   const [itemName, setItemName] = useState('')
@@ -13,17 +14,13 @@ function DeleteSection() {
 
       <section className="p-6 border border-gray-300 rounded-md">
         <div className="flex items-center justify-between">
-          <label className="flex items-center gap-4">
-            <span className="w-20 text-sm">상품명</span>
-
-            <input
-              type="text"
-              placeholder="상품명 입력..."
-              value={itemName}
-              onChange={(e) => setItemName(e.target.value)}
-              className="w-52 px-3 py-2 border border-gray-300 rounded-md"
-            />
-          </label>
+          <FormInput
+            label="상품명"
+            placeholder="상품명 입력..."
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+            inputClassName="w-52"
+          />
 
           <button
             onClick={handleDelete}
