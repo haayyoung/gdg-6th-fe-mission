@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 function Item({ item }) {
-  const [count, setCount] = useState('')
+  const [count, setCount] = useState('0')
   const [isAdded, setIsAdded] = useState(false)
 
   const isActive = count !== '' && Number(count) > 0
