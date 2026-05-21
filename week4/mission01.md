@@ -4,19 +4,6 @@ App.js 파일 하나에 API 연결 로직, 데이터가 없을 때의 UI, 데이
 
 여러 개발자가 협업하며 거대한 코드를 효율적으로 관리하기 위해, 코드를 역할과 관심사에 따라 컴포넌트(부품) 단위로 쪼개어 파일별로 따로 개발하는 리팩토링을 진행합니다.
 
-자바스크립트로 구성된 리팩토링 관련 서적을 읽어볼 것을 권장합니다.
-
-2. VS Code 익스텐션 추천 및 컴포넌트 생성 
-
-리액트 개발 효율을 극대화해 주는 단축어 익스텐션인 React Extension Pack (또는 ES7+ React/Redux/React-Native Snippets) 사용을 추천합니다.
-
-rfce 또는 rafce: 기본 컴포넌트 껍데기 코드를 자동 생성해 줍니다.
-
-uss: useState 스니펫 자동 생성 
-uef: useEffect 스니펫 자동 생성
-
-리팩토링을 위해 src 폴더 내에 대문자로 시작하는 두 개의 컴포넌트 파일(EmptyData.js, Todo.js)을 생성합니다. 
-
 3. 컴포넌트 분리 및 Props 전달 
 
 EmptyData 컴포넌트 분리: App.js에 있던 '데이터가 아직 없음'을 나타내는 UI 코드를 EmptyData.js로 옮기고, App.js에서 이를 임포트하여 삽입합니다. 
