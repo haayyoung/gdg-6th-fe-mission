@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import useCartStore from '../stores/cartStore'
 
 function Item({ item }) {
   const [count, setCount] = useState('0')
   const [isAdded, setIsAdded] = useState(false)
 
+  const addCartItem = useCartStore((state) => state.addCartItem)
   const isActive = count !== '' && Number(count) > 0
 
   const handleCountChange = (e) => {
@@ -11,13 +13,16 @@ function Item({ item }) {
     setIsAdded(false)
   }
 
-  const handleCartClick = () => {
-    console.log('버튼 클릭됨')
-
+   const handleCartClick = () => {
     if (!isActive) return
 
+    addCartItem(item, Number(count))
+
     setIsAdded(true)
+
+    console.log(`${item.itemName} ${count}개가 장바구니에 담겼습니다.`)
   }
+
 
   return (
     <div className="flex items-center justify-between w-[620px] px-6 py-5 border border-gray-300 rounded-lg bg-white">

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import FormInput from './FormInput'
+import { createProduct } from '../apis/shopApi'
 
 function RegisterSection() {
   const [itemName, setItemName] = useState('')
@@ -8,6 +9,7 @@ function RegisterSection() {
   const [category, setCategory] = useState('')
 
   const handleRegister = () => {
+    createProduct();
     console.log(`${itemName} ${quantity} ${price} ${category} 가 등록되었습니다.`)
   }
 
