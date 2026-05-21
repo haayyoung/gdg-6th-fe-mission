@@ -8,11 +8,21 @@ function RegisterSection() {
   const [price, setPrice] = useState(0)
   const [category, setCategory] = useState('')
 
-  const handleRegister = () => {
-    createProduct();
-    console.log(`${itemName} ${quantity} ${price} ${category} 가 등록되었습니다.`)
-  }
+ const handleRegister = async () => {
+  try {
+    const product = {
+      name: itemName,
+      price,
+      quantity,
+    }
 
+    await createProduct(product)
+
+    console.log(`${itemName} ${quantity} ${price} ${category} 가 등록되었습니다.`)
+  } catch (error) {
+    console.error('상품 등록 실패:', error)
+  }
+}
   return (
     <>
       <h2 className="mb-6 text-lg font-bold">상품 등록</h2>

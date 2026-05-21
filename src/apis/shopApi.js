@@ -1,31 +1,26 @@
 const BASE_URL = 'http://192.168.134.160:8080'
 
-export const getItemData = async () => {
-  const response = await fetch('/data/item.json')
+const fetchJson = async (url) => {
+  const response = await fetch(url)
   const data = await response.json()
 
   return data
 }
 
-export const getCategoryData = async () => {
-  const response = await fetch('/data/category.json')
-  const data = await response.json()
-
-  return data
+export const getItemData = () => {
+  return fetchJson('/data/item.json')
 }
 
-export const getPriceSelectedData = async () => {
-  const response = await fetch('/data/priceSelected.json')
-  const data = await response.json()
-
-  return data
+export const getCategoryData = () => {
+  return fetchJson('/data/category.json')
 }
 
-export const getSortedData = async () => {
-  const response = await fetch('/data/sorted.json')
-  const data = await response.json()
+export const getPriceSelectedData = () => {
+  return fetchJson('/data/priceSelected.json')
+}
 
-  return data
+export const getSortedData = () => {
+  return fetchJson('/data/sorted.json')
 }
 
 export const createProduct = async (product) => {
